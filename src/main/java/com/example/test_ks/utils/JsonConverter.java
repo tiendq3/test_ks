@@ -1,5 +1,7 @@
 package com.example.test_ks.utils;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -14,6 +16,7 @@ public class JsonConverter {
     public static <T> String convertListToJson(List<T> list) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
+//            objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
             return objectMapper.writeValueAsString(list);
         } catch (JsonProcessingException e) {
             e.printStackTrace();

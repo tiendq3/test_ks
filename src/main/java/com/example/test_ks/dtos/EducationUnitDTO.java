@@ -6,13 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EducationUnitDTO {
+public class EducationUnitDTO implements FieldMappingColumnName {
 
     private Long id;
 
@@ -73,4 +75,22 @@ public class EducationUnitDTO {
     private String address;
     private String unitCode;
     private Long foundedDate;
+
+    @Override
+    public Map<String, List<String>> fieldMappingColumnName() {
+        Map<String, List<String>> map = new HashMap<>();
+        map.put("parentId", List.of("parentId"));
+        map.put("parentName", List.of("parentName"));
+        map.put("type", List.of("type"));
+        map.put("status", List.of("status"));
+        map.put("functionType", List.of("functionType"));
+        map.put("partyUnitId", List.of("partyUnitId"));
+        map.put("partyUnitName", List.of("partyUnitName"));
+        map.put("unionUnitId", List.of("unionUnitId"));
+        map.put("headId", List.of("headId"));
+        map.put("deputyIds", List.of("deputyIds"));
+        map.put("rootId", List.of("rootId"));
+        map.put("assetStaffIds", List.of("assetStaffIds"));
+        return map;
+    }
 }

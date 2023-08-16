@@ -1,4 +1,4 @@
-package com.example.test_ks.utils;
+package com.example.test_ks.config;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -10,63 +10,63 @@ public final class TeacherConfigField {
             .builder()
             .fieldName("Id")
             .columnNames(List.of("ID", "id", "Id"))
-            .dataType("Long")
+            .dataType(Long.class)
             .build();
 
     public static final MappingColumnNameToField userName = MappingColumnNameToField
             .builder()
             .fieldName("userName")
             .columnNames(List.of("Tên đăng nhập", "username"))
-            .dataType("String")
+            .dataType(String.class)
             .build();
 
     public static final MappingColumnNameToField password = MappingColumnNameToField
             .builder()
             .fieldName("password")
             .columnNames(List.of("Mật khẩu", "password"))
-            .dataType("String")
+            .dataType(String.class)
             .build();
 
     public static final MappingColumnNameToField password2 = MappingColumnNameToField
             .builder()
             .fieldName("password2")
             .columnNames(List.of("Mật khẩu 2", "password2"))
-            .dataType("String")
+            .dataType(String.class)
             .build();
 
     public static final MappingColumnNameToField fullName = MappingColumnNameToField
             .builder()
             .fieldName("fullName")
             .columnNames(List.of("Họ và tên", "Họ và Tên", "fullName"))
-            .dataType("String")
+            .dataType(String.class)
             .build();
 
     public static final MappingColumnNameToField firstName = MappingColumnNameToField
             .builder()
             .fieldName("firstName")
             .columnNames(List.of("Tên", "firstName"))
-            .dataType("String")
+            .dataType(String.class)
             .build();
 
     public static final MappingColumnNameToField lastName = MappingColumnNameToField
             .builder()
             .fieldName("lastName")
             .columnNames(List.of("Họ", "lastName"))
-            .dataType("String")
+            .dataType(String.class)
             .build();
 
-    public static final MappingColumnNameToField gender = MappingColumnNameToField
-            .builder()
-            .fieldName("gender")
-            .columnNames(List.of("Giới tính", "gender"))
-            .dataType("Integer")
-            .build();
+//    public static final MappingColumnNameToField gender = MappingColumnNameToField
+//            .builder()
+//            .fieldName("gender")
+//            .columnNames(List.of("Giới tính", "gender"))
+//            .dataType(Integer.class)
+//            .build();
 
     public static final MappingColumnNameToField staffCode = MappingColumnNameToField
             .builder()
             .fieldName("staffCode")
-            .columnNames(List.of("Mã Cán Bộ", "Mã CB", "staffCode"))
-            .dataType("String")
+            .columnNames(List.of("Mã Cán Bộ", "Mã cán bộ", "Mã CB", "staffCode"))
+            .dataType(String.class)
             .build();//CAN_BO_ID
     public static MappingColumnNameToField age;
     public static MappingColumnNameToField commonName;
@@ -84,7 +84,7 @@ public final class TeacherConfigField {
             .builder()
             .fieldName("rootId")
             .columnNames(List.of("Mã Đơn Vị", "rootId"))
-            .dataType("Long")
+            .dataType(Long.class)
             .build();
 
     public static MappingColumnNameToField uniId;
@@ -95,6 +95,7 @@ public final class TeacherConfigField {
             .builder()
             .fieldName("rootName")
             .columnNames(List.of("Tên Đơn Vị", "rootName"))
+            .dataType(String.class)
             .build();
     private static MappingColumnNameToField departmentName;
     private static MappingColumnNameToField partyUnitName;
@@ -166,7 +167,7 @@ public final class TeacherConfigField {
             .builder()
             .fieldName("birthDate")
             .columnNames(List.of("Ngày Sinh", "birthDate"))
-            .dataType("Long")
+            .dataType(Long.class)
             .build();
 
     private static MappingColumnNameToField birthPlace;
@@ -178,15 +179,15 @@ public final class TeacherConfigField {
             .builder()
             .fieldName("workEmail")
             .columnNames(List.of("Email", "workEmail"))
-            .dataType("String")
+            .dataType(String.class)
             .build();
     private static MappingColumnNameToField personalEmail;
 
     public static final MappingColumnNameToField workPhoneNumber = MappingColumnNameToField
             .builder()
             .fieldName("workPhoneNumber")
-            .columnNames(List.of("Số điện thoại", "SĐT", "workPhoneNumber", "phone","Điện Thoại"))
-            .dataType("String")
+            .columnNames(List.of("Số điện thoại", "SĐT", "workPhoneNumber", "phone", "Điện Thoại"))
+            .dataType(String.class)
             .build();
     private static MappingColumnNameToField cellPhoneNumber;
     private static MappingColumnNameToField otherEmails = null;
@@ -218,5 +219,4 @@ public final class TeacherConfigField {
     private static MappingColumnNameToField status;
     private static MappingColumnNameToField tmpStatus;
     private static MappingColumnNameToField lastUpdate;
-
 }

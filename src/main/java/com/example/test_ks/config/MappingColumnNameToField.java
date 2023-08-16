@@ -1,4 +1,4 @@
-package com.example.test_ks.utils;
+package com.example.test_ks.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +16,7 @@ public class MappingColumnNameToField {
 
     private String fieldName;
 
-    private String dataType;
+    private Class<?> dataType;
 
     private List<String> columnNames = new ArrayList<>();
 

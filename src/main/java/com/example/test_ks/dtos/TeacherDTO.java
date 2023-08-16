@@ -1,19 +1,20 @@
 package com.example.test_ks.dtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Builder
-public class TeacherDTO {
+public class TeacherDTO implements FieldMappingColumnName {
     private Long id;
 
     private String userName = "";
@@ -223,4 +224,18 @@ public class TeacherDTO {
     private Integer status;
     private Integer tmpStatus;
     private long lastUpdate;
+
+    @Override
+    public Map<String, List<String>> fieldMappingColumnName() {
+        Map<String, List<String>> map = new HashMap<>();
+        map.put("staffCode", List.of("Mã cán bộ", "Mã CB", "staffCode"));
+        map.put("fullName", List.of("Họ và tên", "Họ và Tên", "fullName"));
+        map.put("birthDate", List.of("birthDate", "Ngày Sinh", "Ngày sinh"));
+        map.put("workEmail", List.of("Email", "email"));
+        map.put("workPhoneNumber", List.of("Số điện thoại", "Sđt", "Phone", "Điện thoại"));
+
+        map.put("firstName", List.of("Tên", "firstName"));
+        map.put("lastName", List.of("Họ", "lastName"));
+        return map;
+    }
 }

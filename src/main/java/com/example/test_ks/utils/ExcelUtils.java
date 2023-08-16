@@ -1,32 +1,39 @@
 package com.example.test_ks.utils;
 
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
 
-import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public final class ExcelUtils {
-    public static String getCellValue(Cell cell) {
-        if (cell == null) {
-            return null;
-        }
-        CellType cellType = cell.getCellType();
-        switch (cellType) {
+    public static Object getCellValue(Cell cell) {
+        switch (cell.getCellType()) {
             case STRING:
-                return cell.getStringCellValue();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    Date date = sdf.parse(cell.getStringCellValue());
+                    Date date1 = sdf1.parse(cell.getStringCellValue());
+                    long unixTime = date.getTime();
+                    long unixTime1 = date1.getTime();
+                    return Math.max(unixTime1, unixTime);
+                } catch (ParseException e) {
+                    return cell.getStringCellValue();
+                }
             case NUMERIC:
                 if (DateUtil.isCellDateFormatted(cell)) {
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-                    return dateFormat.format(cell.getDateCellValue());
+                    return cell.getDateCellValue().getTime();
                 } else {
-                    return String.valueOf((int) cell.getNumericCellValue());
+                    return cell.getNumericCellValue();
                 }
             case BOOLEAN:
-                return String.valueOf(cell.getBooleanCellValue());
+                return cell.getBooleanCellValue();
             case FORMULA:
-                return String.valueOf(cell.getCellFormula());
+                return cell.getCellFormula();
+            case BLANK:
+
             default:
                 return null;
         }
